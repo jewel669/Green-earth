@@ -1,4 +1,3 @@
-
 let cart = [];
 let total = 0;
 let activeCategory = null;
@@ -20,7 +19,7 @@ const loadLevelWord = (id, btn) => {
   btn.classList.add("bg-green-200");
   activeCategory = btn;
 
-  const url = https://openapi.programming-hero.com/api/category/${id};
+  const url = `https://openapi.programming-hero.com/api/category/${id}`;
   fetch(url)
     .then((res) => res.json())
     .then((data) => {
@@ -41,7 +40,7 @@ const loadAllTrees = () => {
     .then((res) => res.json())
     .then((json) => {
       const allTreePromises = json.categories.map((cat) =>
-        fetch(https://openapi.programming-hero.com/api/category/${cat.id}).then((res) => res.json())
+        fetch(`https://openapi.programming-hero.com/api/category/${cat.id}`).then((res) => res.json())
       );
 
       Promise.all(allTreePromises).then((results) => {
@@ -69,7 +68,7 @@ const loadAllTrees = () => {
 
 
 const loadWordDetail= async(id) =>{
-  const url = https://openapi.programming-hero.com/api/plant/${id};
+  const url = `https://openapi.programming-hero.com/api/plant/${id}`;
   const res = await fetch(url);
   const details = await res.json()
   displayWordDetails(details.plants)
@@ -147,8 +146,8 @@ const updateCart = () => {
     cartContainer.append(li);
   });
 
-  totalContainer.innerText = ${total};
-}; 
+  totalContainer.innerText = `৳${total}`;
+};
 
 // Spinner only for Card Section (overlay on top)
 const toggleCardSpinner = (isLoading) => {
